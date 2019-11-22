@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar'
-// import TextField from 'material-ui/TextField'
+import TextField from 'material-ui/TextField'
 // import {List, ListItem} from 'material-ui/List'
 import RaisedButton from 'material-ui/RaisedButton'
 
@@ -15,7 +15,7 @@ export class Optional extends Component {
         this.props.prevStep();
     }
     render() {
-        // const { values, handleChange } = this.props;
+        const { values, handleChange } = this.props;
         return (
             <MuiThemeProvider>
                 <React.Fragment>
@@ -27,16 +27,69 @@ export class Optional extends Component {
 
                     <h4>What is the date of the offer?</h4>
 
+                    <TextField 
+                        hintText="Offer Date"
+                        floatingLabelText="Offer Date"
+                        onChange={handleChange('offer_date')}
+                        defaultValue={values.offer_date}
+                    />
+                    
                     <h4>What is the first name of the candidate?</h4>
+                    
+                    <TextField 
+                        hintText="Candidate Name"
+                        floatingLabelText="Candidate Name"
+                        onChange={handleChange('nhire_first_name')}
+                        defaultValue={values.nhire_first_name}
+                    />
+                    
                     <h4>What would be the title of the candidate?</h4>
+                    
+                    <TextField 
+                        hintText="Candidate Title"
+                        floatingLabelText="Candidate Title"
+                        onChange={handleChange('nhire_title')}
+                        defaultValue={values.nhire_title}
+                    />
+                    
                     <h4>What is the name of the company?</h4>
 
+                    <TextField 
+                        hintText="Company Name"
+                        floatingLabelText="Company Name"
+                        onChange={handleChange('co_name')}
+                        defaultValue={values.co_name}
+                    />
+                    
                     <h4>What is the hiring manager’s first name?</h4>
 
+                    
+                    <TextField 
+                        hintText="Hiring Manager's First Name"
+                        floatingLabelText="Hiring Manager's First Name"
+                        onChange={handleChange('hman_first_name')}
+                        defaultValue={values.hman_first_name}
+                    />
+                    
                     <h4>What is the hiring manager’s phone number?</h4>
 
+                    <TextField 
+                        hintText="Hiring Manager's Phone Number"
+                        floatingLabelText="Hiring Manager's Phone Number"
+                        onChange={handleChange('hman_phone')}
+                        defaultValue={values.hman_phone}
+                    />
+                    
+                    
                     <h4>What is the hiring manager’s email address?</h4>
               
+                    <TextField 
+                        hintText="Hiring Manager's Email"
+                        floatingLabelText="Hiring Manager's Email"
+                        onChange={handleChange('hman_email')}
+                        defaultValue={values.hman_email}
+                    />
+                    
                     <br/>
                     <RaisedButton 
                         label="Continue"
