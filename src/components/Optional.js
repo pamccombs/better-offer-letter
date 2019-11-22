@@ -28,7 +28,7 @@ export class Optional extends Component {
                     <h4>What is the date of the offer?</h4>
 
                     <h4>What is the first name of the candidate?</h4>
-
+                    <h4>What would be the title of the candidate?</h4>
                     <h4>What is the name of the company?</h4>
 
                     <h4>What is the hiring manager’s first name?</h4>
