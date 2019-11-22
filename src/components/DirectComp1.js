@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar'
-// import TextField from 'material-ui/TextField'
-// import {List, ListItem} from 'material-ui/List'
 import RaisedButton from 'material-ui/RaisedButton'
-// import direct_comp1 from './formtext/direct_comp1.js'
+import TextField from 'material-ui/TextField'
+// For Slider
+// import { makeStyles } from "@material-ui/core/styles";
+// import Grid from "@material-ui/core/Grid";
+// import Typography from "@material-ui/core/Typography";
+// import Slider from "@material-ui/core/Slider";
+// import Input from "@material-ui/core/Input";
+// import VolumeUp from "@material-ui/icons/VolumeUp";
+
 
 export class DirectComp1 extends Component {
     continue = e => {
@@ -17,7 +23,7 @@ export class DirectComp1 extends Component {
         this.props.prevStep();
     }
     render() {
-        //const { values, handleChange } = this.props;
+        const { values, handleChange } = this.props;
         // const directComp1Text = direct_comp1;
         return (
             <MuiThemeProvider>
@@ -30,6 +36,15 @@ export class DirectComp1 extends Component {
                         and you should be prepared to justify the comparison to the skills and experience expected by the market.</h4>
 
                     (Slider from -25% to +25%)
+
+                    <br/>
+
+                    <TextField 
+                        hintText="Enter Slider Value"
+                        floatingLabelText="Percent Slider"
+                        onChange={handleChange('pct_slider')}
+                        defaultValue={values.pct_slider}
+                    />
               
                     <br/>
                     <RaisedButton 
@@ -55,5 +70,14 @@ const styles = {
         margin: 15
     }
 }
+
+// const useStyles = makeStyles({
+//     root: {
+//       width: 250
+//     },
+//     input: {
+//       width: 42
+//     }
+//   });
 
 export default DirectComp1
