@@ -14,7 +14,55 @@ import Letter from './Letter';
 export class UserForm extends Component {
     state = {
         step: 1,
-        firstName: '',
+        // DC1
+        pct_slider: 0,
+        //DC2
+        comp_person_name: '',
+        comp_person_email: '',
+        //DC3
+        salary: false,
+        bench_salary: 0,
+        offer_salary: 0,
+        hour_pay: 0,
+        hour_week: 0,
+        //AB
+        bench_bonus: 0,
+        perform_bonus: false,
+        comp_max_bonus: '',
+        nhire_max_bonus: '',
+        //EoS
+        vest_years: 0,
+        vest_rate_mos: 1,
+        co_public: false,
+        co_private: false,
+        if_public_price: 0,
+        if_public_shares: 0,
+        if_private_value: 0, //option for blank
+        if_unpriced: false,
+        pct_share_offer: 0,
+        //B
+        health_insurance: false,
+        dental_insurance: false,
+        vision_insurance: false,
+        pre_tax_spending: false,
+        retirement_matching: false,
+        tuition_reimbursement: false,
+        childcare: false,
+        wellness: false,
+        lunch: false,
+        student_loan_assist: false,
+        other_benefit: '',
+        //ROP
+        onboard_assist: 0,
+        //Opt
+        offer_date: '',
+        nhire_first_name: '',
+        nhire_title: '',
+        co_name: '',
+        hman_first_name: '',
+        hman_phone: '',
+        hman_email: '',
+
         lastName: '',
         email: '',
         occupation: '',
@@ -46,8 +94,8 @@ export class UserForm extends Component {
 
     render() {
         const { step } = this.state
-        const { firstName, lastName, email, occupation, city, bio } = this.state
-        const values = { firstName, lastName, email, occupation, city, bio }
+        const { pct_slider, comp_person_name, comp_person_email, occupation, city, bio } = this.state
+        const values = { pct_slider, comp_person_name, comp_person_email, occupation, city, bio }
         
         switch(step) {
             case 1:
@@ -72,6 +120,7 @@ export class UserForm extends Component {
                     <DirectComp1 //DC
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
+                        handleChange={this.handleChange}
                         values={values}
                     />
                 )
@@ -80,6 +129,7 @@ export class UserForm extends Component {
                     <DirectComp2 //DC
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
+                        handleChange={this.handleChange}
                         values={values}
                     />
                 )
@@ -88,6 +138,7 @@ export class UserForm extends Component {
                     <DirectComp3 //DC
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
+                        handleChange={this.handleChange}
                         values={values}
                     />
                 )
@@ -96,6 +147,7 @@ export class UserForm extends Component {
                     <AnnualBonus
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
+                        handleChange={this.handleChange}
                         values={values}
                     />
                 )
@@ -104,6 +156,7 @@ export class UserForm extends Component {
                     <EquityOrStock 
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
+                        handleChange={this.handleChange}
                         values={values}
                     />
                 )
@@ -112,6 +165,7 @@ export class UserForm extends Component {
                     <Benefits 
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
+                        handleChange={this.handleChange}
                         values={values}
                     />
                 )
@@ -120,6 +174,7 @@ export class UserForm extends Component {
                     <OnboardingPay
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
+                        handleChange={this.handleChange}
                         values={values}
                     />
                 )
@@ -128,6 +183,7 @@ export class UserForm extends Component {
                     <Optional
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
+                        handleChange={this.handleChange}
                         values={values}
                     />
                 )
