@@ -17,8 +17,8 @@ export class UserForm extends Component {
         // DC1
         pct_slider: 0,
         //DC2
-        comp_person_name: '',
-        comp_person_email: '',
+        comp_person_name: 'Alan A. Dollar',
+        comp_person_email: 'test@test.com',
         //DC3
         salary: false,
         bench_salary: 0,
@@ -55,19 +55,14 @@ export class UserForm extends Component {
         //ROP
         onboard_assist: 0,
         //Opt
-        offer_date: '',
-        nhire_first_name: '',
-        nhire_title: '',
-        co_name: '',
-        hman_first_name: '',
-        hman_phone: '',
-        hman_email: '',
+        offer_date: '11/22/19',
+        nhire_first_name: 'John',
+        nhire_title: 'Title',
+        co_name: 'My Company',
+        hman_first_name: 'Jane',
+        hman_phone: '888-888-8888',
+        hman_email: 'test@test.com'
 
-        lastName: '',
-        email: '',
-        occupation: '',
-        city: '',
-        bio: ''
     }
 
     // Proceed to next step
@@ -94,8 +89,24 @@ export class UserForm extends Component {
 
     render() {
         const { step } = this.state
-        const { pct_slider, comp_person_name, comp_person_email, occupation, city, bio } = this.state
-        const values = { pct_slider, comp_person_name, comp_person_email, occupation, city, bio }
+        const { pct_slider, comp_person_name, comp_person_email, salary, bench_salary, 
+        offer_salary, hour_pay, hour_week, bench_bonus, perform_bonus, comp_max_bonus,
+        nhire_max_bonus, vest_years, vest_rate_mos, co_public, co_private, if_public_price,
+        if_public_shares, if_private_value, if_unpriced, pct_share_offer, health_insurance, dental_insurance,
+        vision_insurance, pre_tax_spending, retirement_matching, tuition_reimbursement,
+        childcare, wellness, lunch, student_loan_assist, other_benefit, onboard_assist,
+        offer_date, nhire_first_name, nhire_title, co_name, hman_first_name,
+        hman_phone, hman_email
+        } = this.state
+        const values = { pct_slider, comp_person_name, comp_person_email, salary, bench_salary, 
+        offer_salary, hour_pay, hour_week, bench_bonus, perform_bonus, comp_max_bonus,
+        nhire_max_bonus, vest_years, vest_rate_mos, co_public, co_private, if_public_price,
+        if_public_shares, if_private_value, if_unpriced, pct_share_offer, health_insurance, dental_insurance,
+        vision_insurance, pre_tax_spending, retirement_matching, tuition_reimbursement,
+        childcare, wellness, lunch, student_loan_assist, other_benefit, onboard_assist,
+        offer_date, nhire_first_name, nhire_title, co_name, hman_first_name,
+        hman_phone, hman_email
+        }
         
         switch(step) {
             case 1:
