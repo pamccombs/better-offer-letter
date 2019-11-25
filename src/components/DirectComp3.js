@@ -2,11 +2,24 @@ import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar'
 import TextField from 'material-ui/TextField'
-// import {List, ListItem} from 'material-ui/List'
 import RaisedButton from 'material-ui/RaisedButton'
-// import direct_comp3 from './formtext/direct_comp3.js'
+// Buttons
+import Button from '@material-ui/core/Button'
+import ButtonGroup from '@material-ui/core/ButtonGroup'
+
 
 export class DirectComp3 extends Component {
+    state={
+        salary_text: '<li>1. Salary: Great.  What is the benchmark salary?</li>'
+    }
+
+    handleClick = e => {
+        const text = this.state.salary_text
+        e.preventDefault();
+        console.log(text)
+      }
+
+
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
@@ -15,9 +28,11 @@ export class DirectComp3 extends Component {
         e.preventDefault();
         this.props.prevStep();
     }
+
     render() {
         const { values, handleChange } = this.props;
-        // const directComp3Text = direct_comp3;
+        
+        
         return (
             <MuiThemeProvider>
                 <React.Fragment>
@@ -25,9 +40,30 @@ export class DirectComp3 extends Component {
 
                         <h4>Is this position salaried or hourly?</h4>
 
-                        Note: Salary or Hourly button here - salary?
+                        Note: Salary or Hourly button here - salary?<br/>
 
-                        <li>1. Salary: Great.  What is the benchmark salary?</li>
+                        <ButtonGroup
+                            variant="contained"
+                            color="inherit"
+                            aria-label="full-width contained primary button group"
+                            >
+                            <Button onClick={
+
+                                this.handleClick
+                                
+                                
+                            }>
+                                
+                                
+                               
+                                    Salary
+                            </Button>
+
+                            {/* <Button onClick={this.back}>Salary</Button> */}
+                            <Button onClick={this.continue}>Hourly</Button>
+                        </ButtonGroup><br/>
+
+                        {/* <li>1. Salary: Great.  What is the benchmark salary?</li> */}
                         
                         <TextField 
                             hintText="Enter The Benchmark Salary"
