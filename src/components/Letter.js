@@ -15,7 +15,7 @@ export class Letter extends Component {
         this.props.prevStep();
     }
     render() {
-        const { values, handleChange } = this.props;
+        const { values } = this.props;
         return (
             <MuiThemeProvider>
                 <React.Fragment>
