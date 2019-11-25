@@ -5,7 +5,13 @@ import AppBar from 'material-ui/AppBar'
 // import {List, ListItem} from 'material-ui/List'
 import RaisedButton from 'material-ui/RaisedButton'
 
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+
 export class Benefits extends Component {
+    
+
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
@@ -15,7 +21,7 @@ export class Benefits extends Component {
         this.props.prevStep();
     }
     render() {
-        // const { values, handleChange } = this.props;
+        const { values, handleChange } = this.props;
         return (
             <MuiThemeProvider>
                 <React.Fragment>
@@ -28,6 +34,20 @@ export class Benefits extends Component {
                     </h4>
     
                     {/* <p><input type="checkbox" name="health-insurance" /> Health Insurance</p> */}
+
+                    <FormGroup row>
+                        <FormControlLabel
+                            control={
+                            <Checkbox
+                                checked={values.health_insurance}
+                                onChange={handleChange('health_insurance')}
+                                value= 'health_insurance'
+                                color="primary"
+                            />
+                            }
+                            label="Health Insurance"
+                        />
+                    </FormGroup>
                     <li>Health Insurance</li>
                     <li>Dental Insurance</li>
                     <li>Vision Insurance</li>
