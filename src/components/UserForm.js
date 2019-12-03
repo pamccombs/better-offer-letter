@@ -20,7 +20,7 @@ export class UserForm extends Component {
         comp_person_name: 'Alan A. Dollar',
         comp_person_email: 'test@test.com',
         //DC3
-        salary: false,
+        // salary: false, add to render
         bench_salary: 0,
         offer_salary: 0,
         hour_pay: 0,
@@ -89,7 +89,7 @@ export class UserForm extends Component {
 
     render() {
         const { step } = this.state
-        const { pct_slider, comp_person_name, comp_person_email, salary, bench_salary, 
+        const { pct_slider, comp_person_name, comp_person_email, bench_salary, 
         offer_salary, hour_pay, hour_week, bench_bonus, perform_bonus, comp_max_bonus,
         nhire_max_bonus, vest_years, vest_rate_mos, co_public, co_private, if_public_price,
         if_public_shares, if_private_value, if_unpriced, pct_share_offer, health_insurance, dental_insurance,
@@ -98,7 +98,7 @@ export class UserForm extends Component {
         offer_date, nhire_first_name, nhire_title, co_name, hman_first_name,
         hman_phone, hman_email
         } = this.state
-        const values = { pct_slider, comp_person_name, comp_person_email, salary, bench_salary, 
+        const values = { pct_slider, comp_person_name, comp_person_email, bench_salary, 
         offer_salary, hour_pay, hour_week, bench_bonus, perform_bonus, comp_max_bonus,
         nhire_max_bonus, vest_years, vest_rate_mos, co_public, co_private, if_public_price,
         if_public_shares, if_private_value, if_unpriced, pct_share_offer, health_insurance, dental_insurance,
