@@ -21,6 +21,7 @@ export class DirectComp3 extends Component {
             salary: !this.state.salary,
             hourly: false
         })
+       
     }
 
     handleHourlyClick = e => {
@@ -55,7 +56,12 @@ export class DirectComp3 extends Component {
                             color="inherit"
                             aria-label="full-width contained primary button group"
                             >
-                                <Button onClick={this.handleSalaryClick}>Salary</Button>
+                                <Button 
+                                onClick={this.handleSalaryClick}
+                                >Salary</Button>
+                                
+                                
+                                
                                 <Button onClick={this.handleHourlyClick}>Hourly</Button>       
                         </ButtonGroup><br/>
 
@@ -67,14 +73,16 @@ export class DirectComp3 extends Component {
                                 <li>1. Salary: Great.  What is the benchmark salary?</li>
                                         
                                 <TextField 
+                                    type="number"
                                     hintText="Enter The Benchmark Salary"
                                     floatingLabelText="Benchmark Salary"
                                     onChange={handleChange('bench_salary')}
-                                    defaultValue={values.bench_salary}
+                                    value={values.bench_salary}
+                                    // defaultValue=''
                                 />
 
                                 {/* <h4>Result = (Display Benchmark and Your Offer)</h4> */}
-                        <h4>Benchmark = {values.bench_salary}, Your Offer = {values.bench_salary}</h4>
+                        <h4>Benchmark = {values.bench_salary}, Your Offer = {values.offer_salary}</h4>
 
                                 Note: benchmark value and adjusted value based on slider(offer_salary)
                             </div> }
@@ -85,25 +93,29 @@ export class DirectComp3 extends Component {
                                 <li>2. Hourly: Great.  How much per hour?</li>
                             
                                 <TextField 
+                                    type="number"
                                     id="hour_pay"
                                     hintText="Rate per Hour?"
                                     floatingLabelText="Rate per Hour"
                                     onChange={handleChange('hour_pay')}
-                                    defaultValue={values.hour_pay}
+                                    value={values.hour_pay}
+                                    // defaultValue=''
                                 />
                                 <li>2a. How many hours per week?</li>
         
                                 <TextField 
+                                    type="number"
                                     id="hour_week"
                                     hintText="Hours per Week?"
                                     floatingLabelText="Hours per Week"
                                     onChange={handleChange('hour_week')}
-                                    defaultValue={values.hour_week}
+                                    value={values.hour_week}
+                                    // defaultValue=''
                                 />
         
                                 <h4>Result = (Display Benchmark and Your Offer)</h4>
                                
-                                <h4>Benchmark = { values.bench_hourly } Your Offer = </h4>
+                        <h4>Benchmark = { values.bench_hourly }, Your Offer = { values.offer_hourly }</h4>
                             </div> }
 
                         {/* /Conditional Render */}
