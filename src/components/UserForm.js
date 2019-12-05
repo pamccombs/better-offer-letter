@@ -25,6 +25,7 @@ export class UserForm extends Component {
         offer_salary: 0,
         hour_pay: 0,
         hour_week: 0,
+        bench_hourly: 0, 
         //AB
         bench_bonus: 0,
         perform_bonus: false,
@@ -86,11 +87,20 @@ export class UserForm extends Component {
         this.setState({[input]: e.target.value});
     }
 
+    // Fix setState Delay
+    componentDidUpdate(prevProps, prevState) {
+        const product = this.state.hour_pay * this.state.hour_week
+        if ( this.state.bench_hourly !== product) {
+            this.setState({
+                bench_hourly: product
+            })
+        }
+      }
 
     render() {
         const { step } = this.state
         const { pct_slider, comp_person_name, comp_person_email, bench_salary, 
-        offer_salary, hour_pay, hour_week, bench_bonus, perform_bonus, comp_max_bonus,
+        offer_salary, hour_pay, hour_week, bench_hourly, bench_bonus, perform_bonus, comp_max_bonus,
         nhire_max_bonus, vest_years, vest_rate_mos, co_public, co_private, if_public_price,
         if_public_shares, if_private_value, if_unpriced, pct_share_offer, health_insurance, dental_insurance,
         vision_insurance, pre_tax_spending, retirement_matching, tuition_reimbursement,
@@ -99,7 +109,7 @@ export class UserForm extends Component {
         hman_phone, hman_email
         } = this.state
         const values = { pct_slider, comp_person_name, comp_person_email, bench_salary, 
-        offer_salary, hour_pay, hour_week, bench_bonus, perform_bonus, comp_max_bonus,
+        offer_salary, hour_pay, hour_week, bench_hourly, bench_bonus, perform_bonus, comp_max_bonus,
         nhire_max_bonus, vest_years, vest_rate_mos, co_public, co_private, if_public_price,
         if_public_shares, if_private_value, if_unpriced, pct_share_offer, health_insurance, dental_insurance,
         vision_insurance, pre_tax_spending, retirement_matching, tuition_reimbursement,
@@ -107,7 +117,7 @@ export class UserForm extends Component {
         offer_date, nhire_first_name, nhire_title, co_name, hman_first_name,
         hman_phone, hman_email
         }
-        
+
         switch(step) {
             case 1:
                 return (
