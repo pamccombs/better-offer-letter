@@ -2,35 +2,26 @@ import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar'
 import RaisedButton from 'material-ui/RaisedButton'
-import TextField from 'material-ui/TextField'
+// import TextField from 'material-ui/TextField'
 // For Slider
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import Input from "@material-ui/core/Input";
-import VolumeUp from "@material-ui/icons/VolumeUp";
+// import VolumeUp from "@material-ui/icons/VolumeUp";
 
-
-
-
+// const useStyles = makeStyles({
+//     root: {
+//       width: 250,
+//     },
+//     input: {
+//       width: 42,
+//     },
+//   });
 
 export class DirectComp1 extends Component {
-
-    
-    // classes = () => useStyles();
-   
-    
-
-
-    // handleBlur = () => {
-    //     if (this.state.pct_slider < 0) {
-    //         this.setState({pct_slider: 0});
-    //       } else if (this.state.pct_slider > 100) {
-    //         this.setState({pct_slider: 100});
-    //       }
-    // }
-    classes = () => useStyles();
 
     continue = e => {
         e.preventDefault();
@@ -42,11 +33,7 @@ export class DirectComp1 extends Component {
         this.props.prevStep();
     }
     render() {
-        const { values, handleChange, handleSliderChange } = this.props;
-        
-       
-        
-       
+        const { values, handleChange, classes, handleSliderChange, handleBlur } = this.props;
 
         return (
             <MuiThemeProvider>
@@ -59,56 +46,58 @@ export class DirectComp1 extends Component {
                         and you should be prepared to justify the comparison to the skills and experience expected by the market.</h4>
 
                     {/* (Slider from -25% to +25%) */}
-<div>
-                    {/* <div className={useStyles.root}> */}
-      <Typography id="input-slider" gutterBottom>
-        Slider(%)
-      </Typography>
-      <Grid container spacing={2} alignItems="center">
-        <Grid item>
-          <VolumeUp />
-        </Grid>
-        <Grid item sm  >
-          <Slider
-            // value={values.pct_slider}
-            defaultValue={0}
-            onChange={handleSliderChange}
-            step={1}
-            min={-25}
-            max={25}
-            
-            aria-labelledby="input-slider"
-          />
-        </Grid>
-        <Grid item>
-          <Input
-            className={useStyles.input}
-            value={values.pct_slider}
-            margin="dense"
-            onChange={handleChange('pct_slider')}
-            defaultValue={values.pct_slider}
-            onBlur={this.handleBlur}
-            inputProps={{
-              step: 5,
-              min: -25,
-              max: 25,
-              type: 'number',
-              'aria-labelledby': 'input-slider',
-            }}
-          />
-        </Grid>
-      </Grid>
-    </div>
+                    <div>
+                    {/* <div className={classes.root}> */}
+                    <Typography id="input-slider" gutterBottom>
+                        Slider(%) from -25% - 25%
+                    </Typography>
+                    <Grid 
+                        container 
+                        spacing={2} 
+                        justify="center"
+                        >
+                        {/* <Grid item>
+                        <VolumeUp />
+                        </Grid > */}
+                        <Grid item xs={2}>
+                        <Slider
+                        
+                            value={values.pct_slider}
+                            onChange={handleSliderChange}
+                            step={1}
+                            min={-25}
+                            max={25}
+                            aria-labelledby="input-slider"
+                        />
+                        </Grid>
+                        <Grid item>
+                        <Input
+                            className={classes.input}
+                            value={values.pct_slider}
+                            margin="dense"
+                            onChange={handleChange('pct_slider')}
+                            onBlur={handleBlur}
+                            inputProps={{
+                            step: 5,
+                            min: -25,
+                            max: 25,
+                            type: 'number',
+                            'aria-labelledby': 'input-slider',
+                            }}
+                        />
+                        </Grid>
+                    </Grid>
+                    </div>
   
 
                     <br/>
 
-                    <TextField 
+                    {/* <TextField 
                         hintText="Enter Slider Value"
                         floatingLabelText="Percent Slider"
                         onChange={handleChange('pct_slider')}
-                        defaultValue={values.pct_slider}
-                    />
+                        value={values.pct_slider}
+                    /> */}
               
                     <br/>
                     <RaisedButton 
@@ -129,20 +118,23 @@ export class DirectComp1 extends Component {
     }
 }
 
-const useStyles = makeStyles({
-    root: {
-      width: 250,
-    },
-    input: {
-      width: 42,
-    },
-  });
+// DirectComp1.propTypes = {
+//     classes: PropTypes.object.isRequired,
+//   };
+
+
   
 
 const styles = {
     button: {
         margin: 15
-    }
+    },
+    root: {
+        width: 250,
+    },
+    input: {
+        width: 42,
+    },
 }
 
 
@@ -151,4 +143,4 @@ const styles = {
 
   
 
-export default DirectComp1
+export default withStyles(styles)(DirectComp1);
