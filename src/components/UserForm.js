@@ -87,6 +87,13 @@ export class UserForm extends Component {
         this.setState({[input]: e.target.value});
     }
 
+    // Handle slider change
+    handleSliderChange = (e, newValue) => {
+        //console.log(newValue);
+     this.setState({ pct_slider: newValue });
+     
+     } 
+
     // Fix setState Delay
     componentDidUpdate(prevProps, prevState) {
         const product = this.state.hour_pay * this.state.hour_week
@@ -142,6 +149,7 @@ export class UserForm extends Component {
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
                         handleChange={this.handleChange}
+                        handleSliderChange={this.handleSliderChange}
                         values={values}
                     />
                 )
