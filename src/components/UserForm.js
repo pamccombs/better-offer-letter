@@ -27,7 +27,7 @@ export class UserForm extends Component {
         hour_pay: '',
         hour_week: '',
         bench_hourly: 0,
-        offer_hourly: 0, 
+        offer_hourly: 0,
         //AB
         bench_bonus: 0,
         perform_bonus: false,
@@ -86,41 +86,33 @@ export class UserForm extends Component {
 
     // Handle fields change
     handleChange = input => e => {
-        this.setState({[input]: e.target.value});
-        // const originalBenchHourly = this.state.bench_hourly
-        // const pctActualHourly = this.state.pct_slider * 0.01
-        // const pctHourly = pctActualHourly * originalBenchHourly
-        // const hourlyOffer =  Number(originalBenchHourly) + Number(pctHourly.toFixed(2))
-        // if ( this.state.offer_hourly !== hourlyOffer) {
-        //     this.setState({
-        //         offer_hourly: hourlyOffer
-        //     })
-        // }
+        this.setState({ [input]: e.target.value });
     }
 
     // Handle slider change
     handleSliderChange = (e, newValue) => {
-        console.log(newValue);
-     this.setState({ pct_slider: newValue });
-     
-     } 
+        this.setState({ pct_slider: newValue });
+    }
 
     handleBlur = () => {
-    if (this.state.pct_slider < -25) {
-        this.setState({pct_slider: -25});
+        if (this.state.pct_slider < -25) {
+            this.setState({ pct_slider: -25 });
         } else if (this.state.pct_slider > 25) {
-        this.setState({pct_slider: 25});
+            this.setState({ pct_slider: 25 });
         }
     }
 
-    // no dupes
-    
+    // Handle check
+    handleCheck = name => event => {
+        this.setState({ ...this.state, [name]: event.target.checked });
+      };
+
 
     // Fix setState Delay
     componentDidUpdate(prevProps, prevState) {
         // Hourly
         const product = this.state.hour_pay * this.state.hour_week
-        if ( this.state.bench_hourly !== product) {
+        if (this.state.bench_hourly !== product) {
             this.setState({
                 bench_hourly: product
             })
@@ -128,8 +120,8 @@ export class UserForm extends Component {
         const originalBenchHourly = this.state.bench_hourly
         const pctActualHourly = this.state.pct_slider * 0.01
         const pctHourly = pctActualHourly * originalBenchHourly
-        const hourlyOffer =  Number(originalBenchHourly) + Number(pctHourly.toFixed(2))
-        if ( this.state.offer_hourly !== hourlyOffer) {
+        const hourlyOffer = Number(originalBenchHourly) + Number(pctHourly.toFixed(2))
+        if (this.state.offer_hourly !== hourlyOffer) {
             this.setState({
                 offer_hourly: hourlyOffer
             })
@@ -138,36 +130,37 @@ export class UserForm extends Component {
         const originalBenchSalary = this.state.bench_salary
         const pctActualSalary = this.state.pct_slider * 0.01
         const pctSalary = pctActualSalary * originalBenchSalary
-        const salaryOffer =  Number(originalBenchSalary) + Number(pctSalary.toFixed(2))
-        if ( this.state.offer_salary !== salaryOffer) {
+        const salaryOffer = Number(originalBenchSalary) + Number(pctSalary.toFixed(2))
+        if (this.state.offer_salary !== salaryOffer) {
             this.setState({
                 offer_salary: salaryOffer
             })
         }
-      }
+    }
 
     render() {
         const { step } = this.state
-        const { pct_slider, comp_person_name, comp_person_email, bench_salary, 
-        offer_salary, hour_pay, hour_week, bench_hourly, offer_hourly, bench_bonus, perform_bonus, comp_max_bonus,
-        nhire_max_bonus, vest_years, vest_rate_mos, co_public, co_private, if_public_price,
-        if_public_shares, if_private_value, if_unpriced, pct_share_offer, health_insurance, dental_insurance,
-        vision_insurance, pre_tax_spending, retirement_matching, tuition_reimbursement,
-        childcare, wellness, lunch, student_loan_assist, other_benefit, onboard_assist,
-        offer_date, nhire_first_name, nhire_title, co_name, hman_first_name,
-        hman_phone, hman_email
+        const { pct_slider, comp_person_name, comp_person_email, bench_salary,
+            offer_salary, hour_pay, hour_week, bench_hourly, offer_hourly, bench_bonus, perform_bonus, comp_max_bonus,
+            nhire_max_bonus, vest_years, vest_rate_mos, co_public, co_private, if_public_price,
+            if_public_shares, if_private_value, if_unpriced, pct_share_offer, health_insurance, dental_insurance,
+            vision_insurance, pre_tax_spending, retirement_matching, tuition_reimbursement,
+            childcare, wellness, lunch, student_loan_assist, other_benefit, onboard_assist,
+            offer_date, nhire_first_name, nhire_title, co_name, hman_first_name,
+            hman_phone, hman_email
         } = this.state
-        const values = { pct_slider, comp_person_name, comp_person_email, bench_salary, 
-        offer_salary, hour_pay, hour_week, bench_hourly, offer_hourly, bench_bonus, perform_bonus, comp_max_bonus,
-        nhire_max_bonus, vest_years, vest_rate_mos, co_public, co_private, if_public_price,
-        if_public_shares, if_private_value, if_unpriced, pct_share_offer, health_insurance, dental_insurance,
-        vision_insurance, pre_tax_spending, retirement_matching, tuition_reimbursement,
-        childcare, wellness, lunch, student_loan_assist, other_benefit, onboard_assist,
-        offer_date, nhire_first_name, nhire_title, co_name, hman_first_name,
-        hman_phone, hman_email
+        const values = {
+            pct_slider, comp_person_name, comp_person_email, bench_salary,
+            offer_salary, hour_pay, hour_week, bench_hourly, offer_hourly, bench_bonus, perform_bonus, comp_max_bonus,
+            nhire_max_bonus, vest_years, vest_rate_mos, co_public, co_private, if_public_price,
+            if_public_shares, if_private_value, if_unpriced, pct_share_offer, health_insurance, dental_insurance,
+            vision_insurance, pre_tax_spending, retirement_matching, tuition_reimbursement,
+            childcare, wellness, lunch, student_loan_assist, other_benefit, onboard_assist,
+            offer_date, nhire_first_name, nhire_title, co_name, hman_first_name,
+            hman_phone, hman_email
         }
 
-        switch(step) {
+        switch (step) {
             case 1:
                 return (
                     <Overview1 //Overview1
@@ -225,7 +218,7 @@ export class UserForm extends Component {
                 )
             case 7:
                 return (
-                    <EquityOrStock 
+                    <EquityOrStock
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
                         handleChange={this.handleChange}
@@ -234,10 +227,11 @@ export class UserForm extends Component {
                 )
             case 8:
                 return (
-                    <Benefits 
+                    <Benefits
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
                         handleChange={this.handleChange}
+                        handleCheck={this.handleCheck}
                         values={values}
                     />
                 )
@@ -261,7 +255,7 @@ export class UserForm extends Component {
                 )
             case 11:
                 return (
-                    <Letter 
+                    <Letter
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
                         values={values}
@@ -269,7 +263,7 @@ export class UserForm extends Component {
                 )
 
             default:
-                // do nothing
+            // do nothing
         }
     }
 }
