@@ -32,6 +32,7 @@ export class OnboardingPay extends Component {
                         floatingLabelText="Onboarding Assistance"
                         onChange={handleChange('onboard_assist')}
                         defaultValue={values.onboard_assist}
+                        type='number'
                     />
               
                     <br/>
