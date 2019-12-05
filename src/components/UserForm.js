@@ -11,6 +11,7 @@ import OnboardingPay from './OnboardingPay';
 import Optional from './Optional';
 import Letter from './Letter';
 
+
 export class UserForm extends Component {
     state = {
         step: 1,
@@ -21,11 +22,12 @@ export class UserForm extends Component {
         comp_person_email: 'test@test.com',
         //DC3
         // salary: false, add to render
-        bench_salary: 0,
+        bench_salary: '',
         offer_salary: 0,
-        hour_pay: 0,
-        hour_week: 0,
-        bench_hourly: 0, 
+        hour_pay: '',
+        hour_week: '',
+        bench_hourly: 0,
+        offer_hourly: 0, 
         //AB
         bench_bonus: 0,
         perform_bonus: false,
@@ -85,21 +87,61 @@ export class UserForm extends Component {
     // Handle fields change
     handleChange = input => e => {
         this.setState({[input]: e.target.value});
+        // const originalBenchHourly = this.state.bench_hourly
+        // const pctActualHourly = this.state.pct_slider * 0.01
+        // const pctHourly = pctActualHourly * originalBenchHourly
+        // const hourlyOffer =  Number(originalBenchHourly) + Number(pctHourly.toFixed(2))
+        // if ( this.state.offer_hourly !== hourlyOffer) {
+        //     this.setState({
+        //         offer_hourly: hourlyOffer
+        //     })
+        // }
     }
 
     // Handle slider change
     handleSliderChange = (e, newValue) => {
-        //console.log(newValue);
+        console.log(newValue);
      this.setState({ pct_slider: newValue });
      
      } 
 
+    handleBlur = () => {
+    if (this.state.pct_slider < -25) {
+        this.setState({pct_slider: -25});
+        } else if (this.state.pct_slider > 25) {
+        this.setState({pct_slider: 25});
+        }
+    }
+
+    // no dupes
+    
+
     // Fix setState Delay
     componentDidUpdate(prevProps, prevState) {
+        // Hourly
         const product = this.state.hour_pay * this.state.hour_week
         if ( this.state.bench_hourly !== product) {
             this.setState({
                 bench_hourly: product
+            })
+        }
+        const originalBenchHourly = this.state.bench_hourly
+        const pctActualHourly = this.state.pct_slider * 0.01
+        const pctHourly = pctActualHourly * originalBenchHourly
+        const hourlyOffer =  Number(originalBenchHourly) + Number(pctHourly.toFixed(2))
+        if ( this.state.offer_hourly !== hourlyOffer) {
+            this.setState({
+                offer_hourly: hourlyOffer
+            })
+        }
+        // Salary
+        const originalBenchSalary = this.state.bench_salary
+        const pctActualSalary = this.state.pct_slider * 0.01
+        const pctSalary = pctActualSalary * originalBenchSalary
+        const salaryOffer =  Number(originalBenchSalary) + Number(pctSalary.toFixed(2))
+        if ( this.state.offer_salary !== salaryOffer) {
+            this.setState({
+                offer_salary: salaryOffer
             })
         }
       }
@@ -107,7 +149,7 @@ export class UserForm extends Component {
     render() {
         const { step } = this.state
         const { pct_slider, comp_person_name, comp_person_email, bench_salary, 
-        offer_salary, hour_pay, hour_week, bench_hourly, bench_bonus, perform_bonus, comp_max_bonus,
+        offer_salary, hour_pay, hour_week, bench_hourly, offer_hourly, bench_bonus, perform_bonus, comp_max_bonus,
         nhire_max_bonus, vest_years, vest_rate_mos, co_public, co_private, if_public_price,
         if_public_shares, if_private_value, if_unpriced, pct_share_offer, health_insurance, dental_insurance,
         vision_insurance, pre_tax_spending, retirement_matching, tuition_reimbursement,
@@ -116,7 +158,7 @@ export class UserForm extends Component {
         hman_phone, hman_email
         } = this.state
         const values = { pct_slider, comp_person_name, comp_person_email, bench_salary, 
-        offer_salary, hour_pay, hour_week, bench_hourly, bench_bonus, perform_bonus, comp_max_bonus,
+        offer_salary, hour_pay, hour_week, bench_hourly, offer_hourly, bench_bonus, perform_bonus, comp_max_bonus,
         nhire_max_bonus, vest_years, vest_rate_mos, co_public, co_private, if_public_price,
         if_public_shares, if_private_value, if_unpriced, pct_share_offer, health_insurance, dental_insurance,
         vision_insurance, pre_tax_spending, retirement_matching, tuition_reimbursement,
@@ -150,6 +192,7 @@ export class UserForm extends Component {
                         prevStep={this.prevStep}
                         handleChange={this.handleChange}
                         handleSliderChange={this.handleSliderChange}
+                        handleBlur={this.handleBlur}
                         values={values}
                     />
                 )
