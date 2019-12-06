@@ -139,28 +139,10 @@ export class UserForm extends Component {
     }
 
     render() {
-        const { step } = this.state
-        const { pct_slider, comp_person_name, comp_person_email, bench_salary,
-            offer_salary, hour_pay, hour_week, bench_hourly, offer_hourly, bench_bonus, perform_bonus, comp_max_bonus,
-            nhire_max_bonus, vest_years, vest_rate_mos, co_public, co_private, if_public_price,
-            if_public_shares, if_private_value, if_unpriced, pct_share_offer, health_insurance, dental_insurance,
-            vision_insurance, pre_tax_spending, retirement_matching, tuition_reimbursement,
-            childcare, wellness, lunch, student_loan_assist, other_benefit, onboard_assist,
-            offer_date, nhire_first_name, nhire_title, co_name, hman_first_name,
-            hman_phone, hman_email
-        } = this.state
-        const values = {
-            pct_slider, comp_person_name, comp_person_email, bench_salary,
-            offer_salary, hour_pay, hour_week, bench_hourly, offer_hourly, bench_bonus, perform_bonus, comp_max_bonus,
-            nhire_max_bonus, vest_years, vest_rate_mos, co_public, co_private, if_public_price,
-            if_public_shares, if_private_value, if_unpriced, pct_share_offer, health_insurance, dental_insurance,
-            vision_insurance, pre_tax_spending, retirement_matching, tuition_reimbursement,
-            childcare, wellness, lunch, student_loan_assist, other_benefit, onboard_assist,
-            offer_date, nhire_first_name, nhire_title, co_name, hman_first_name,
-            hman_phone, hman_email
-        }
+        const {...state} = this.state
+        const values = {...state}
 
-        switch (step) {
+        switch (values.step) {
             case 1:
                 return (
                     <Overview1 //Overview1
