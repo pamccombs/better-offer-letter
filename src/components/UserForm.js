@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Router, Switch, Route, NavLink } from 'react-router-dom'
+import history from "../services/history"
 import Overview1 from './Overview1';
 import Overview2 from './Overview2';
 import DirectComp1 from './DirectComp1';
@@ -14,7 +16,7 @@ import Letter from './Letter';
 
 export class UserForm extends Component {
     state = {
-        step: 1,
+        step: [],
         // DC1
         pct_slider: 0,
         //DC2
@@ -67,13 +69,19 @@ export class UserForm extends Component {
         hman_email: 'test@test.com'
 
     }
-
+    //function to add to steps
+        //something
+    
     // Proceed to next step
+    // nextStep = () => {
+    // const { step } = this.state
+    //     this.setState({
+    //         step: step + 1
+    //     });
+    // }
     nextStep = () => {
-        const { step } = this.state
-        this.setState({
-            step: step + 1
-        });
+        history.push('/overview/2')
+        
     }
 
     // Go Back to previous step
@@ -105,7 +113,7 @@ export class UserForm extends Component {
     // Handle check
     handleCheck = name => event => {
         this.setState({ ...this.state, [name]: event.target.checked });
-      };
+    };
 
 
     // Fix setState Delay
@@ -139,114 +147,135 @@ export class UserForm extends Component {
     }
 
     render() {
-        const {...state} = this.state
-        const values = {...state}
+        const { ...state } = this.state
+        const values = { ...state }
 
-        switch (values.step) {
-            case 1:
-                return (
-                    <Overview1 //Overview1
-                        nextStep={this.nextStep}
-                        handleChange={this.handleChange}
-                        values={values}
-                    />
-                )
-            case 2:
-                return (
-                    <Overview2 //Overview2
-                        nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        handleChange={this.handleChange}
-                        values={values}
-                    />
-                )
-            case 3:
-                return (
-                    <DirectComp1 //DC
-                        nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        handleChange={this.handleChange}
-                        handleSliderChange={this.handleSliderChange}
-                        handleBlur={this.handleBlur}
-                        values={values}
-                    />
-                )
-            case 4:
-                return (
-                    <DirectComp2 //DC
-                        nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        handleChange={this.handleChange}
-                        values={values}
-                    />
-                )
-            case 5:
-                return (
-                    <DirectComp3 //DC
-                        nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        handleChange={this.handleChange}
-                        values={values}
-                    />
-                )
-            case 6:
-                return (
-                    <AnnualBonus
-                        nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        handleChange={this.handleChange}
-                        values={values}
-                    />
-                )
-            case 7:
-                return (
-                    <EquityOrStock
-                        nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        handleChange={this.handleChange}
-                        values={values}
-                    />
-                )
-            case 8:
-                return (
-                    <Benefits
-                        nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        handleChange={this.handleChange}
-                        handleCheck={this.handleCheck}
-                        values={values}
-                    />
-                )
-            case 9:
-                return (
-                    <OnboardingPay
-                        nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        handleChange={this.handleChange}
-                        values={values}
-                    />
-                )
-            case 10:
-                return (
-                    <Optional
-                        nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        handleChange={this.handleChange}
-                        values={values}
-                    />
-                )
-            case 11:
-                return (
-                    <Letter
-                        nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        values={values}
-                    />
-                )
+        return (
 
-            default:
-            // do nothing
-        }
+            <Router history={history}>
+                <div>
+                    <div >
+                        <NavLink to="/overview/1">  OV1    |</NavLink>
+                        <NavLink to="/overview/2">  OV2     |</NavLink>
+
+                        <NavLink to="/direct_comp/1">   DC1     |</NavLink>
+                        <NavLink to="/direct_comp/2">   DC2     |</NavLink>
+                        <NavLink to="/direct_comp/3">   DC3     |</NavLink>
+                        {/* optional checkbox */}
+                        <NavLink to="/annual_bonus">    AB      |</NavLink>
+                        <NavLink to="/equity_or_stock">   EoS     |</NavLink>
+                        <NavLink to="/benefits">   Ben     |</NavLink>
+                        <NavLink to="/onboarding_pay">   ObP     |</NavLink>
+
+                        <NavLink to="/optional">   Opt     |</NavLink>
+                        <NavLink to="/letter">   Letter     </NavLink>
+                    </div>
+                    <Switch>
+
+                        <Route exact path="/overview/1" render={() =>
+                            <Overview1 //Overview1
+                                nextStep={this.nextStep}
+                                handleChange={this.handleChange}
+                                values={values}
+                            />
+                        } />
+
+
+                        <Route exact path="/overview/2" render={() =>
+                            <Overview2 //Overview2
+                                nextStep={this.nextStep}
+                                prevStep={this.prevStep}
+                                handleChange={this.handleChange}
+                                values={values}
+                            />
+                        } />
+
+                         <Route exact path="/direct_comp/1" render={() =>
+                            <DirectComp1 
+                                nextStep={this.nextStep}
+                                prevStep={this.prevStep}
+                                handleChange={this.handleChange}
+                                handleSliderChange={this.handleSliderChange}
+                                handleBlur={this.handleBlur}
+                                values={values}
+                            />
+                        } />
+
+                        <Route exact path="/direct_comp/2" render={()=>
+                            <DirectComp2 //DC
+                                nextStep={this.nextStep}
+                                prevStep={this.prevStep}
+                                handleChange={this.handleChange}
+                                values={values}
+                            />
+                        } />
+
+                        <Route exact path="/direct_comp/3" render={()=>
+                            <DirectComp3 //DC
+                                nextStep={this.nextStep}
+                                prevStep={this.prevStep}
+                                handleChange={this.handleChange}
+                                values={values}
+                            />
+                        } />
+
+                        <Route exact path="/annual_bonus" render={()=>
+                            <AnnualBonus
+                                nextStep={this.nextStep}
+                                prevStep={this.prevStep}
+                                handleChange={this.handleChange}
+                                values={values}
+                            />
+                        } />
+
+                        <Route exact path="/equity_or_stock" render={()=>
+                            <EquityOrStock
+                                nextStep={this.nextStep}
+                                prevStep={this.prevStep}
+                                handleChange={this.handleChange}
+                                values={values}
+                            />
+                        } />
+
+                        <Route exact path="/benefits" render={()=>
+                            <Benefits
+                                nextStep={this.nextStep}
+                                prevStep={this.prevStep}
+                                handleChange={this.handleChange}
+                                handleCheck={this.handleCheck}
+                                values={values}
+                            />
+                        } />
+
+                        <Route exact path="/onboarding_pay" render={()=>
+                            <OnboardingPay
+                                nextStep={this.nextStep}
+                                prevStep={this.prevStep}
+                                handleChange={this.handleChange}
+                                values={values}
+                            />
+                        } />
+
+                        <Route exact path="/optional" render={()=>
+                            <Optional
+                                nextStep={this.nextStep}
+                                prevStep={this.prevStep}
+                                handleChange={this.handleChange}
+                                values={values}
+                            />
+                        } />
+
+                        <Route exact path="/letter" render={()=>
+                            <Letter
+                                nextStep={this.nextStep}
+                                prevStep={this.prevStep}
+                                values={values}
+                            />
+                        } />
+                    </Switch>
+                </div>
+            </Router>
+        )
     }
 }
 
