@@ -22,6 +22,8 @@ export class Overview2 extends Component {
                 <React.Fragment>
                     <AppBar title="Overview cont." />
 
+                    <h1>Overview cont.</h1>
+
                     <h1>First up, let’s determine the components of your offer.</h1>
                         {/* Checkboxes add slides to queue */}
                         <li>(Non optional) Direct Compensation (hourly or salaried wages)</li>

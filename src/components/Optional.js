@@ -21,6 +21,8 @@ export class Optional extends Component {
                 <React.Fragment>
                     <AppBar title="Optional" />
 
+                    <h1>Optional</h1>
+
                     <h4>Finally, a page of optional information.</h4>
                     <h4>Anything you don’t complete will be left as a variable in the letter text.</h4>
                     <h4>As a reminder, no data is collected in this tool and all processing is done on your browser and not sent back to a server.</h4>

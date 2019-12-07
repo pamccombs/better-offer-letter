@@ -49,6 +49,7 @@ export class DirectComp3 extends Component {
             <MuiThemeProvider>
                 <React.Fragment>
                     <AppBar title="Direct Compensation cont." />
+                    <h1>Direct Compensation cont.</h1>
                         <h4>Is this position salaried or hourly?</h4><br/>
 
                         <ButtonGroup

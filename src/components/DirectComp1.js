@@ -5,6 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 // import TextField from 'material-ui/TextField'
 // For Slider
 // import { makeStyles } from "@material-ui/core/styles";
+// import { values } from './UserForm'
 import { withStyles } from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -39,6 +40,8 @@ export class DirectComp1 extends Component {
             <MuiThemeProvider>
                 <React.Fragment>
                     <AppBar title="Direct Compensation" />
+
+                    <h1>Direct Compensation</h1>
 
                     <h4>Based on the new hire’s skills and experience, how much more or less business value will they create compared to the 
                         average hire for this role?</h4>  

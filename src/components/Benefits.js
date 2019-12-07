@@ -27,6 +27,8 @@ export class Benefits extends Component {
                 <React.Fragment>
                     <AppBar title="Benefits" />
 
+                    <h1>Benefits</h1>
+
                     <h4>Now for benefits.  While the full list of benefits may be too long to include in an offer letter,
                     it is important to make sure your new hire has a general idea of what is available.</h4>
                     <h4>

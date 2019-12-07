@@ -21,6 +21,8 @@ export class AnnualBonus extends Component {
                 <React.Fragment>
                     <AppBar title="Annual Bonus" />
 
+                    <h1>Annual Bonus</h1>
+
                     <h4> Now for annual bonus.  What is the benchmark’s maximum potential yearly bonus? </h4>
 
                     <TextField 

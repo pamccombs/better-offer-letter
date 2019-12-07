@@ -21,6 +21,8 @@ export class EquityOrStock extends Component {
                 <React.Fragment>
                     <AppBar title="Equity or Stock" />
 
+                    <h1>Equity or Stock</h1>
+
                     <h4> Now for equity. </h4>  
                     
                     <h4> Over how many years will the equity vest? </h4>

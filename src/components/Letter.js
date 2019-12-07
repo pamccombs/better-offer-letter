@@ -21,6 +21,8 @@ export class Letter extends Component {
                 <React.Fragment>
                     <AppBar title="Letter" />
 
+                    <h1>Letter</h1>
+
                     <p>{values.offer_date}</p><br/>
  
                     <p>{values.nhire_first_name}</p><br/>

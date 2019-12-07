@@ -22,6 +22,9 @@ export class DirectComp2 extends Component {
             <MuiThemeProvider>
                 <React.Fragment>
                     <AppBar title="Direct Compensation cont." />
+
+                    <h1>Direct Compensation cont.</h1>
+                    
                         <h4>In order to create a fair process and avoid biasing the hiring manager, you need to name someone that the candidate can submit additional information to 
                             if they believe the benchmark or experience assessment are incorrect.</h4>  
                         <h4>This could be someone in HR, another hiring manager, or the hiring manager’s manager (sometimes called a “skip level”).</h4>
