@@ -90,18 +90,6 @@ export class UserForm extends Component {
     componentDidMount(){
         const links = this.state.step
         history.push(links[0])
-        history.push(links[1])
-        history.push(links[2])
-        history.push(links[3])
-        history.push(links[4])
-
-        history.push(links[5])
-        history.push(links[6])
-        history.push(links[7])
-        history.push(links[8])
-        history.push(links[9])
-        history.push(links[10])
-        history.go(-11)
         console.log(history.location.pathname)
     }
 
@@ -122,7 +110,16 @@ export class UserForm extends Component {
 
     // Go Back to previous step
     prevStep = () => {
-        history.goBack()
+        const links = this.state.step
+        // compare links array with history.location.pathname
+        const prevLink = () => {
+            for (var i = 0; i < links.length; i++) {
+                if (links[i] === history.location.pathname)
+                    return links[i - 1]
+            }
+        }
+        console.log(prevLink())
+        history.push(prevLink())
     }
 
     // Handle fields change
