@@ -16,7 +16,22 @@ import Letter from './Letter';
 
 export class UserForm extends Component {
     state = {
-        step: [],
+        step: [
+            "/overview/1",
+            "/overview/2",
+
+            "/direct_comp/1",
+            "/direct_comp/2",
+            "/direct_comp/3",
+
+            "/annual_bonus",
+            "/equity_or_stock",
+            "/benefits",
+            "/onboarding_pay",
+
+            "/optional",
+            "/letter",
+        ],
         // DC1
         pct_slider: 0,
         //DC2
@@ -69,19 +84,40 @@ export class UserForm extends Component {
         hman_email: 'test@test.com'
 
     }
-    //function to add to steps
-    //something
 
-    // Proceed to next step
-    // nextStep = () => {
-    // const { step } = this.state
-    //     this.setState({
-    //         step: step + 1
-    //     });
-    // }
+    
+    
+    componentDidMount(){
+        const links = this.state.step
+        history.push(links[0])
+        history.push(links[1])
+        history.push(links[2])
+        history.push(links[3])
+        history.push(links[4])
+
+        history.push(links[5])
+        history.push(links[6])
+        history.push(links[7])
+        history.push(links[8])
+        history.push(links[9])
+        history.push(links[10])
+        history.go(-11)
+        console.log(history.location.pathname)
+    }
+
+    //Go forward to next step
+    
     nextStep = () => {
-        history.goForward()
+        const links = this.state.step
+        // compare links array with history.location.pathname
+        const nextLink = () => {
+        for (var i = 0; i < links.length; i++) {
+            if (links[i] === history.location.pathname)
 
+                return links[i + 1]
+        }}
+        console.log(nextLink())
+        history.push(nextLink())
     }
 
     // Go Back to previous step
