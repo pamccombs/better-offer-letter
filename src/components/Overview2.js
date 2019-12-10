@@ -3,9 +3,15 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar'
 // import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
+// Checkboxes
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+
 // import overview2 from './formtext/overview2.js'
 
 export class Overview2 extends Component {
+   
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
@@ -15,8 +21,8 @@ export class Overview2 extends Component {
         this.props.prevStep();
     }
     render() {
-        // const { values, handleChange } = this.props;
-        // const overview2Text = overview2;
+        const { values, handleSlideCheck } = this.props;
+        
         return (
             <MuiThemeProvider>
                 <React.Fragment>
@@ -27,19 +33,59 @@ export class Overview2 extends Component {
                     <h1>First up, let’s determine the components of your offer.</h1>
                         {/* Checkboxes add slides to queue */}
                         <li>(Non optional) Direct Compensation (hourly or salaried wages)</li>
-                        <li>Annual Bonus</li>
-                        <li>Equity or Stock</li>
-                        <li>Benefits</li>
-                        <li>Relocation/Onboarding Payment</li>
-                    
-                    <br/>
-                    <RaisedButton 
+                       
+
+                    <FormGroup row>
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    checked={values.annual_bonus_slide}
+                                    onChange={handleSlideCheck('annual_bonus_slide')}
+                                    // value='/annual_bonus'
+                                    color="primary"
+                                />
+                            } label="Annual Bonus"
+                        />
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    checked={values.equity_or_stock_slide}
+                                    onChange={handleSlideCheck('equity_or_stock_slide')}
+                                    // value='/equity_or_stock'
+                                    color="primary"
+                                />
+                            } label="Equity or Stock"
+                        />
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    checked={values.benefits_slide}
+                                    onChange={handleSlideCheck('benefits_slide')}
+                                    // value='/benefits'
+                                    color="primary"
+                                />
+                            } label="Benefits"
+                        />
+                        <FormControlLabel
+                            control={
+                                <Checkbox 
+                                    checked={values.onboarding_pay_slide}
+                                    onChange={handleSlideCheck('onboarding_pay_slide' )}
+                                    // value='/onboarding_pay'
+                                    color="primary"
+                                />
+                            } label="Relocation/Onboarding Payment"
+                        />
+                    </FormGroup>
+
+                    <br />
+                    <RaisedButton
                         label="Continue"
                         primary={true}
                         style={styles.button}
                         onClick={this.continue}
                     />
-                    <RaisedButton 
+                    <RaisedButton
                         label="Back"
                         primary={false}
                         style={styles.button}

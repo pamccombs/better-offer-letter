@@ -24,14 +24,19 @@ export class UserForm extends Component {
             "/direct_comp/2",
             "/direct_comp/3",
 
-            "/annual_bonus",
-            "/equity_or_stock",
-            "/benefits",
-            "/onboarding_pay",
+            // "/annual_bonus",
+            // "/equity_or_stock",
+            // "/benefits",
+            // "/onboarding_pay",
 
             "/optional",
             "/letter",
         ],
+        //Slides
+        annual_bonus_slide: false,
+        equity_or_stock_slide: false,
+        benefits_slide: false,
+        onboarding_pay_slide: false,
         // DC1
         pct_slider: 0,
         //DC2
@@ -61,6 +66,7 @@ export class UserForm extends Component {
         if_unpriced: false,
         pct_share_offer: 0,
         //B
+        benefits: [],
         health_insurance: false,
         dental_insurance: false,
         vision_insurance: false,
@@ -123,8 +129,8 @@ export class UserForm extends Component {
     }
 
     // Handle fields change
-    handleChange = input => e => {
-        this.setState({ [input]: e.target.value });
+    handleChange = place => e => {
+        this.setState({ [place]: e.target.value });
     }
 
     // Handle slider change
@@ -140,9 +146,46 @@ export class UserForm extends Component {
         }
     }
 
+    
+
     // Handle check
-    handleCheck = name => event => {
-        this.setState({ ...this.state, [name]: event.target.checked });
+    handleSlideCheck = place => e => {
+        this.setState({ ...this.state, [place]: e.target.checked });
+        var array = [...this.state.step]
+        var slide = '/'+ place.replace('_slide', '')
+        var index = array.indexOf(slide)
+        console.log(slide)
+        // console.log(e.target.checked)
+        if (e.target.checked === false && index > -1 ){
+            
+            array.splice(index, 1);
+            console.log(e.target.checked)
+            this.setState({step: array})
+        } else {
+            array.splice(-2, 0, slide);
+            console.log(e.target.checked)
+            this.setState({step: array})
+        }
+    };
+
+    handleBenefitsCheck = place => e => {
+        this.setState({ ...this.state, [place]: e.target.checked });
+        var array = [...this.state.benefits]
+        var slide = place
+        var index = array.indexOf(slide)
+        console.log(slide)
+        // console.log(e.target.checked)
+        if (e.target.checked === false && index > -1 ){
+            
+            array.splice(index, 1);
+            console.log(e.target.checked)
+            this.setState({benefits: array})
+        } else {
+            array.splice(-2, 0, slide);
+            console.log(e.target.checked)
+            this.setState({benefits: array})
+        }
+        
     };
 
 
@@ -215,6 +258,7 @@ export class UserForm extends Component {
                                 nextStep={this.nextStep}
                                 prevStep={this.prevStep}
                                 handleChange={this.handleChange}
+                                handleSlideCheck={this.handleSlideCheck}
                                 values={values}
                             />
                         } />
@@ -271,7 +315,7 @@ export class UserForm extends Component {
                                 nextStep={this.nextStep}
                                 prevStep={this.prevStep}
                                 handleChange={this.handleChange}
-                                handleCheck={this.handleCheck}
+                                handleBenefitsCheck={this.handleBenefitsCheck}
                                 values={values}
                             />
                         } />
