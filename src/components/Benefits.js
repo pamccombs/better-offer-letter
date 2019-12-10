@@ -21,7 +21,7 @@ export class Benefits extends Component {
         this.props.prevStep();
     }
     render() {
-        const { values, handleCheck, handleChange } = this.props;
+        const { values, handleBenefitsCheck, handleChange } = this.props;
         return (
             <MuiThemeProvider>
                 <React.Fragment>
@@ -42,8 +42,8 @@ export class Benefits extends Component {
                             control={
                             <Checkbox
                                 checked={values.health_insurance}
-                                onChange={handleCheck('health_insurance')}
-                                value= 'health_insurance'
+                                onChange={handleBenefitsCheck('health_insurance')}
+                                // value= 'health_insurance'
                                 color="primary"
                             />
                             } label="Health Insurance"
@@ -52,8 +52,8 @@ export class Benefits extends Component {
                             control={
                             <Checkbox
                                 checked={values.dental_insurance}
-                                onChange={handleCheck('dental_insurance')}
-                                value= 'dental_insurance'
+                                onChange={handleBenefitsCheck('dental_insurance')}
+                                // value= 'dental_insurance'
                                 color="primary"
                             />
                             } label="Dental Insurance"
@@ -62,8 +62,8 @@ export class Benefits extends Component {
                             control={
                             <Checkbox
                                 checked={values.vision_insurance}
-                                onChange={handleCheck('vision_insurance')}
-                                value= 'vision_insurance'
+                                onChange={handleBenefitsCheck('vision_insurance')}
+                                // value= 'vision_insurance'
                                 color="primary"
                             />
                             } label="Vision Insurance"
@@ -72,8 +72,8 @@ export class Benefits extends Component {
                             control={
                             <Checkbox
                                 checked={values.pre_tax_spending}
-                                onChange={handleCheck('pre_tax_spending')}
-                                value= 'pre_tax_spending'
+                                onChange={handleBenefitsCheck('pre_tax_spending')}
+                                // value= 'pre_tax_spending'
                                 color="primary"
                             />
                             } label="Pre-Tax Spending Accounts"
@@ -82,8 +82,8 @@ export class Benefits extends Component {
                             control={
                             <Checkbox
                                 checked={values.retirement_matching}
-                                onChange={handleCheck('retirement_matching')}
-                                value= 'retirement_matching'
+                                onChange={handleBenefitsCheck('retirement_matching')}
+                                // value= 'retirement_matching'
                                 color="primary"
                             />
                             } label="Retirement Matching"
@@ -92,8 +92,8 @@ export class Benefits extends Component {
                             control={
                             <Checkbox
                                 checked={values.tuition_reimbursement}
-                                onChange={handleCheck('tuition_reimbursement')}
-                                value= 'tuition_reimbursement'
+                                onChange={handleBenefitsCheck('tuition_reimbursement')}
+                                // value= 'tuition_reimbursement'
                                 color="primary"
                             />
                             } label="Tuition Reimbursement"
@@ -102,8 +102,8 @@ export class Benefits extends Component {
                             control={
                             <Checkbox
                                 checked={values.childcare}
-                                onChange={handleCheck('childcare')}
-                                value= 'childcare'
+                                onChange={handleBenefitsCheck('childcare')}
+                                // value= 'childcare'
                                 color="primary"
                             />
                             } label="Childcare Benefits"
@@ -112,8 +112,8 @@ export class Benefits extends Component {
                             control={
                             <Checkbox
                                 checked={values.wellness}
-                                onChange={handleCheck('wellness')}
-                                value= 'wellness'
+                                onChange={handleBenefitsCheck('wellness')}
+                                // value= 'wellness'
                                 color="primary"
                             />
                             } label="Wellness Benefits"
@@ -122,8 +122,8 @@ export class Benefits extends Component {
                             control={
                             <Checkbox
                                 checked={values.lunch}
-                                onChange={handleCheck('lunch')}
-                                value= 'lunch'
+                                onChange={handleBenefitsCheck('lunch')}
+                                // value= 'lunch'
                                 color="primary"
                             />
                             } label="Free Lunch"
@@ -132,8 +132,8 @@ export class Benefits extends Component {
                             control={
                             <Checkbox
                                 checked={values.student_loan_assist}
-                                onChange={handleCheck('student_loan_assist')}
-                                value= 'student_loan_assist'
+                                onChange={handleBenefitsCheck('student_loan_assist')}
+                                // value= 'student_loan_assist'
                                 color="primary"
                             />
                             } label="Student Loan Assistance"
