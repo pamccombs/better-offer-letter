@@ -96,7 +96,6 @@ export class UserForm extends Component {
     componentDidMount(){
         const links = this.state.step
         history.push(links[0])
-        console.log(history.location.pathname)
     }
 
     //Go forward to next step
@@ -110,7 +109,6 @@ export class UserForm extends Component {
 
                 return links[i + 1]
         }}
-        console.log(nextLink())
         history.push(nextLink())
     }
 
@@ -124,7 +122,6 @@ export class UserForm extends Component {
                     return links[i - 1]
             }
         }
-        console.log(prevLink())
         history.push(prevLink())
     }
 

@@ -79,17 +79,17 @@ export class Overview2 extends Component {
                     </FormGroup>
 
                     <br />
-                    <RaisedButton
-                        label="Continue"
-                        primary={true}
-                        style={styles.button}
-                        onClick={this.continue}
-                    />
-                    <RaisedButton
+                    <RaisedButton 
                         label="Back"
                         primary={false}
                         style={styles.button}
                         onClick={this.back}
+                    />
+                    <RaisedButton 
+                        label="Continue"
+                        primary={true}
+                        style={styles.button}
+                        onClick={this.continue}
                     />
                 </React.Fragment>
             </MuiThemeProvider>
