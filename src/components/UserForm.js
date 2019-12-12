@@ -12,10 +12,15 @@ import Benefits from './Benefits';
 import OnboardingPay from './OnboardingPay';
 import Optional from './Optional';
 import Letter from './Letter';
+//API
+import APIValues from '../containers/APIValues'
+
+const API_URL = process.env.REACT_APP_API_URL;
 
 
 export class UserForm extends Component {
     state = {
+        api_values: [],
         step: [
             "/overview/1",
             "/overview/2",
@@ -91,24 +96,30 @@ export class UserForm extends Component {
 
     }
 
-    
-    
-    componentDidMount(){
+
+
+    componentDidMount() {
         const links = this.state.step
         history.push(links[0])
+        fetch(`${API_URL}/values`)
+        .then(res => res.json())
+        .then(values => {
+            this.setState({api_values: values.data})
+        });
+        
     }
 
     //Go forward to next step
-    
+
     nextStep = () => {
         const links = this.state.step
         // compare links array with history.location.pathname
         const nextLink = () => {
-        for (var i = 0; i < links.length; i++) {
-            if (links[i] === history.location.pathname)
-
-                return links[i + 1]
-        }}
+            for (var i = 0; i < links.length; i++) {
+                if (links[i] === history.location.pathname)
+                    return links[i + 1]
+            }
+        }
         history.push(nextLink())
     }
 
@@ -143,25 +154,25 @@ export class UserForm extends Component {
         }
     }
 
-    
+
 
     // Handle check
     handleSlideCheck = place => e => {
         this.setState({ ...this.state, [place]: e.target.checked });
         var array = [...this.state.step]
-        var slide = '/'+ place.replace('_slide', '')
+        var slide = '/' + place.replace('_slide', '')
         var index = array.indexOf(slide)
-        console.log(slide)
+        // console.log(slide)
         // console.log(e.target.checked)
-        if (e.target.checked === false && index > -1 ){
-            
+        if (e.target.checked === false && index > -1) {
+
             array.splice(index, 1);
-            console.log(e.target.checked)
-            this.setState({step: array})
+            // console.log(e.target.checked)
+            this.setState({ step: array })
         } else {
             array.splice(-2, 0, slide);
-            console.log(e.target.checked)
-            this.setState({step: array})
+            // console.log(e.target.checked)
+            this.setState({ step: array })
         }
     };
 
@@ -170,24 +181,25 @@ export class UserForm extends Component {
         var array = [...this.state.benefits]
         var slide = place
         var index = array.indexOf(slide)
-        console.log(slide)
+        // console.log(slide)
         // console.log(e.target.checked)
-        if (e.target.checked === false && index > -1 ){
-            
+        if (e.target.checked === false && index > -1) {
+
             array.splice(index, 1);
-            console.log(e.target.checked)
-            this.setState({benefits: array})
+            // console.log(e.target.checked)
+            this.setState({ benefits: array })
         } else {
             array.splice(-2, 0, slide);
-            console.log(e.target.checked)
-            this.setState({benefits: array})
+            // console.log(e.target.checked)
+            this.setState({ benefits: array })
         }
-        
+
     };
 
 
     // Fix setState Delay
     componentDidUpdate(prevProps, prevState) {
+        
         // Hourly
         const product = this.state.hour_pay * this.state.hour_week
         if (this.state.bench_hourly !== product) {
@@ -238,7 +250,8 @@ export class UserForm extends Component {
                         <NavLink to="/onboarding_pay">   ObP     |</NavLink>
 
                         <NavLink to="/optional">   Opt     |</NavLink>
-                        <NavLink to="/letter">   Letter     </NavLink>
+                        <NavLink to="/letter">   Letter     |</NavLink>
+                        <NavLink to="/api_values">   API    </NavLink>
                     </div>
                     <Switch>
 
@@ -340,6 +353,15 @@ export class UserForm extends Component {
                                 nextStep={this.nextStep}
                                 prevStep={this.prevStep}
                                 values={values}
+                            />
+                        } />
+
+                        <Route exact path="/api_values" render={() =>
+                            <APIValues
+                                // nextStep={this.nextStep}
+                                // prevStep={this.prevStep}
+                                // values={values}
+                                api_values={values.api_values}
                             />
                         } />
                     </Switch>
