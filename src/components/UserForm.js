@@ -15,12 +15,12 @@ import Letter from './Letter';
 //API
 import APIValues from '../containers/APIValues'
 
-const API_URL = process.env.REACT_APP_API_URL;
+
+
 
 
 export class UserForm extends Component {
     state = {
-        api_values: [],
         step: [
             "/overview/1",
             "/overview/2",
@@ -99,13 +99,15 @@ export class UserForm extends Component {
 
 
     componentDidMount() {
-        const links = this.state.step
-        history.push(links[0])
-        fetch(`${API_URL}/values`)
-        .then(res => res.json())
-        .then(values => {
-            this.setState({api_values: values.data})
-        });
+        // const links = this.state.step
+        // history.push(links[0])
+
+        // fetch(`${API_URL}/values`)
+        // .then(res => res.json())
+        // .then(values => {
+        //     this.setState({api_values: values.data})
+        // });
+
         
     }
 
@@ -358,10 +360,10 @@ export class UserForm extends Component {
 
                         <Route exact path="/api_values" render={() =>
                             <APIValues
-                                // nextStep={this.nextStep}
-                                // prevStep={this.prevStep}
-                                // values={values}
-                                api_values={values.api_values}
+                                // // nextStep={this.nextStep}
+                                // // prevStep={this.prevStep}
+                                // // values={values}
+                                // api_values={values.api_values}
                             />
                         } />
                     </Switch>
