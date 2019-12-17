@@ -32,7 +32,7 @@ export class APIValues extends Component {
     }
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return ({
         api_values: state.api_values
     })

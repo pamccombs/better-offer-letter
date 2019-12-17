@@ -1,4 +1,4 @@
-export default (state = {
+const initialState = {
     pct_slider: 0,
     comp_person_name: "",
     comp_person_email: "",
@@ -31,11 +31,16 @@ export default (state = {
     hman_first_name: "",
     hman_phone: "",
     hman_email: ""
-}, action) => {
+}
+
+export default (state = initialState, action) => {
 
     switch(action.type) {
         case 'UPDATED_DATA':
-            return action.APIValuesFormData
+            return action.apiValuesFormData
+
+        case 'RESET_APIVALUES_FORM':
+            return initialState;
 
         default:
             return state;
