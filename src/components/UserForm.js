@@ -15,8 +15,7 @@ import Letter from './Letter';
 //API
 import APIValues from '../containers/APIValues'
 
-
-
+// const links = []
 
 
 export class UserForm extends Component {
@@ -360,10 +359,7 @@ export class UserForm extends Component {
 
                         <Route exact path="/api_values" render={() =>
                             <APIValues
-                                // // nextStep={this.nextStep}
-                                // // prevStep={this.prevStep}
-                                // // values={values}
-                                // api_values={values.api_values}
+                            
                             />
                         } />
                     </Switch>
