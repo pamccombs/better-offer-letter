@@ -28,6 +28,9 @@ const initialState = {
     nhire_first_name: "",
     nhire_title: "",
     co_name: "",
+    // human: { hman_first_name: "",
+    // hman_phone: "",
+    // hman_email: ""}
     hman_first_name: "",
     hman_phone: "",
     hman_email: ""
