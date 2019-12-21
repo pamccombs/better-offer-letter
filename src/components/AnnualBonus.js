@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar'
 import TextField from 'material-ui/TextField'
 // import {List, ListItem} from 'material-ui/List'
 import RaisedButton from 'material-ui/RaisedButton'
 
-export class AnnualBonus extends Component {
-    continue = e => {
+const AnnualBonus = (props, values) => {
+
+    const forward = e => {
         e.preventDefault();
-        this.props.nextStep();
+        props.nextStep();
     }
-    back = e => {
+    const back = e => {
         e.preventDefault();
-        this.props.prevStep();
+        props.prevStep();
     }
-    render() {
-        const { values, handleChange } = this.props;
+    
         return (
             <MuiThemeProvider>
                 <React.Fragment>
@@ -28,7 +28,7 @@ export class AnnualBonus extends Component {
                     <TextField 
                         hintText="Maximum Potential Yearly Bonus"
                         floatingLabelText="Yearly Bonus"
-                        onChange={handleChange('bench_bonus')}
+                        onChange={props.handleChange('bench_bonus')}
                         defaultValue={values.bench_bonus}
                     />
                     
@@ -37,7 +37,7 @@ export class AnnualBonus extends Component {
                     <TextField 
                         hintText="Potential Hires Performance"
                         floatingLabelText="Hires Performance"
-                        onChange={handleChange('perform_bonus')}
+                        onChange={props.handleChange('perform_bonus')}
                         defaultValue={values.perform_bonus}
                     />
                     
@@ -47,7 +47,7 @@ export class AnnualBonus extends Component {
                     <TextField 
                         hintText="Maximum Bonus Company Needs"
                         floatingLabelText="Maximum Bonus Company"
-                        onChange={handleChange('comp_max_bonus')}
+                        onChange={props.handleChange('comp_max_bonus')}
                         defaultValue={values.comp_max_bonus}
                     />
                     
@@ -57,7 +57,7 @@ export class AnnualBonus extends Component {
                     <TextField 
                         hintText="Maximum Bonus New Hire Needs"
                         floatingLabelText="Maximum Bonus New Hire"
-                        onChange={handleChange('nhire_max_bonus')}
+                        onChange={props.handleChange('nhire_max_bonus')}
                         defaultValue={values.nhire_max_bonus}
                     />
 
@@ -70,18 +70,18 @@ export class AnnualBonus extends Component {
                         label="Back"
                         primary={false}
                         style={styles.button}
-                        onClick={this.back}
+                        onClick={back}
                     />
                     <RaisedButton 
                         label="Continue"
                         primary={true}
                         style={styles.button}
-                        onClick={this.continue}
+                        onClick={forward}
                     />
                 </React.Fragment>
             </MuiThemeProvider>
         )
-    }
+    
 }
 
 const styles = {

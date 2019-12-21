@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -13,29 +13,20 @@ import Slider from "@material-ui/core/Slider";
 import Input from "@material-ui/core/Input";
 // import VolumeUp from "@material-ui/icons/VolumeUp";
 
-// const useStyles = makeStyles({
-//     root: {
-//       width: 250,
-//     },
-//     input: {
-//       width: 42,
-//     },
-//   });
 
-export class DirectComp1 extends Component {
+const DirectComp1 = (props, values) => {
 
-    continue = e => {
+    const forward = e => {
         e.preventDefault();
         //api here
-        this.props.nextStep();
+        props.nextStep();
     }
-    back = e => {
+    const back = e => {
         e.preventDefault();
-        this.props.prevStep();
+        props.prevStep();
     }
-    render() {
-        const { values, handleChange, classes, handleSliderChange, handleBlur } = this.props;
-
+    
+        
         return (
             <MuiThemeProvider>
                 <React.Fragment>
@@ -66,7 +57,7 @@ export class DirectComp1 extends Component {
                         <Slider
                         
                             value={values.pct_slider}
-                            onChange={handleSliderChange}
+                            onChange={props.handleSliderChange}
                             step={1}
                             min={-25}
                             max={25}
@@ -75,11 +66,11 @@ export class DirectComp1 extends Component {
                         </Grid>
                         <Grid item>
                         <Input
-                            className={classes.input}
+                            // className={classes.input}
                             value={values.pct_slider}
                             margin="dense"
-                            onChange={handleChange('pct_slider')}
-                            onBlur={handleBlur}
+                            onChange={props.handleChange('pct_slider')}
+                            onBlur={props.handleBlur}
                             inputProps={{
                             step: 5,
                             min: -25,
@@ -107,26 +98,21 @@ export class DirectComp1 extends Component {
                         label="Back"
                         primary={false}
                         style={styles.button}
-                        onClick={this.back}
+                        onClick={back}
                     />
                     <RaisedButton 
-                        label="Continue"
+                        label="continueprops."
                         primary={true}
                         style={styles.button}
-                        onClick={this.continue}
+                        onClick={forward}
                     />
                 </React.Fragment>
             </MuiThemeProvider>
         )
-    }
+    
 }
 
-// DirectComp1.propTypes = {
-//     classes: PropTypes.object.isRequired,
-//   };
-
-
-  
+ 
 
 const styles = {
     button: {
